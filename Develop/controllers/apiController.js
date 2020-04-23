@@ -4,8 +4,8 @@ const router = require("express").Router();
 
 //getLastWorkout route
 router.get("/api/workouts", (req, res)=>{
-    Workout.find({//do sort based on date and return last one by//
-    .sort()})
+    Workout.find({})
+    .sort({ date: -1 })
     .then(workouts => {
     res.json(workouts);
     })
@@ -20,13 +20,20 @@ router.get("/api/workouts", (req, res)=>{
 // take that result (req.body) and update the workout model (req.params.id)based on the newly created exercise
 // look at note taking activity with the 2 models- add comment or add note and then update the user who it belongs to (activity 15)
 router.put("/api/workouts/:id",(req, res)=>{
-
+    Exercise.create({})
+    Workout.updateOne({})
 })
 
 
 //createWorkout route
 router.post("/api/workouts",(req, res)=>{
-
+    Workout.create({})
+    .then(workout => {
+        res.json(workout);
+        })
+        .catch(err => {
+        res.json(err);
+        });
 })
 
 //getWorkoutsInRange
