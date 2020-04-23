@@ -4,9 +4,7 @@ const mongoose = require("mongoose");
 const apiController = require("./.apiController");
 const htmlController = require("./.htmlController");
 
-
 const PORT = process.env.PORT || 3000;
-
 const app = express();
 
 app.use(logger("dev"));

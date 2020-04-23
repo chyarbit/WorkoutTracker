@@ -1,10 +1,10 @@
-const Exercise = require("../models/exercise");
-const Workout = require("../models/workout");
+const Exercise = require("../models/exerciseModel");
+const Workout = require("../models/workoutModel");
 const router = require("express").Router();
 
 //getLastWorkout route
 router.get("/api/workouts", (req, res)=>{
-    Workout.find({//do sort and return last one by//
+    Workout.find({//do sort based on date and return last one by//
     .sort()})
     .then(workouts => {
     res.json(workouts);
@@ -25,13 +25,12 @@ router.put("/api/workouts/:id",(req, res)=>{
 
 
 //createWorkout route
-router.post(,(req, res)=>{
+router.post("/api/workouts",(req, res)=>{
 
 })
-//"/api/workouts"
 
 //getWorkoutsInRange
-router.get(,(req, res)=>{
+router.get("/api/workouts/range",(req, res)=>{
 
 })
 
