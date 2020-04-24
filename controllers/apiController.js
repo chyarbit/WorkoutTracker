@@ -15,13 +15,22 @@ router.get("/api/workouts", (req, res)=>{
 })
 
 //addExercise
-// 2 steps
-// create exercise first using exercise model
-// take that result (req.body) and update the workout model (req.params.id)based on the newly created exercise
-// look at note taking activity with the 2 models- add comment or add note and then update the user who it belongs to (activity 15)
-router.put("/api/workouts/:id",(req, res)=>{
-    Exercise.create(req.body)
-    Workout.updateOne({})
+router.put("/api/workouts/:id",({body,params}, res)=>{
+    Workout.findByIdAndUpdate(
+        params.id,
+        {
+            $push: {exercise:body}
+        },
+        {
+            new: true
+        }
+        )
+    .then(workout => {
+    res.json(workout);
+    })
+    .catch(err => {
+    res.json(err);
+    });   
 })
 
 //createWorkout route

@@ -1,8 +1,8 @@
 const express = require("express");
 const logger = require("morgan");
 const mongoose = require("mongoose");
-const apiController = require("./controllers/apiController");
-const htmlController = require("./controllers/htmlController");
+const apiController = require("./controllers/apiController.js");
+const htmlController = require("./controllers/htmlController.js");
 
 const PORT = process.env.PORT || 3000;
 const app = express();
