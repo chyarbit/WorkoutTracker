@@ -1,6 +1,6 @@
 const Exercise = require("../models/exerciseModel");
 const Workout = require("../models/workoutModel");
-const router = require("./node_modules/express").Router();
+const router = require("express").Router();
 
 //getLastWorkout route
 router.get("/api/workouts", (req, res)=>{
@@ -19,7 +19,7 @@ router.put("/api/workouts/:id",({body,params}, res)=>{
     Workout.findByIdAndUpdate(
         params.id,
         {
-            $push: {exercise:body}
+            $push: {exercises:body}
         },
         {
             new: true
